@@ -6,13 +6,19 @@ let express = require("express"),
 
 require("./server-assets/db/mlab-config");
 
+// let authRoutes = require('./server-assets/auth/routes')
+let generalRoutes = require('./server-assets/routes/general')
+let personalRoutes = require('./server-assets/routes/personal')
+
 server.use(cors());
 server.use(bp.json());
 server.use(bp.urlencoded({ extended: true }));
 
 //Your routes here
+server.use(generalRoutes);
+server.use(personalRoutes);
 
-
+//catch all errors
 server.use("*", (error, req, res, next) => {
     res.status(400).send(error);
   });

@@ -1,8 +1,9 @@
 <template>
   <div class="home">
+    <h1>home.vue thru app.vue</h1>
     <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
-    <itunes class="itunes"></itunes>
-    <my-tunes class="my-tunes"></my-tunes>
+    <itunes class="itunes">itumes</itunes>
+    <my-tunes class="my-tunes">my-tunes</my-tunes>
   </div>
 </template>
 
