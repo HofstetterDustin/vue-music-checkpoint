@@ -1,20 +1,31 @@
 <template>
-  <div class="home">
-    <h1>home.vue thru app.vue</h1>
-    <!-- YOU WILL PROBABLY END UP WITH SOMETHING LIKE THIS -->
-    <itunes class="itunes">itumes</itunes>
-    <my-tunes class="my-tunes">my-tunes</my-tunes>
+  <div class="home container-fluid">
+    <div class="row topRow">
+      <form class="col-sm-12" @submit.prevent='musicSearch'>
+        <input type="text" v-model="title" placeholder="Music Title">
+        <button type="submit">search MusicDB</button>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" id="itunes">Hack-Tunes</div>
+      <div class="col-sm-6" id="my-tunes">My-Hack-Tunes</div>
+    </div>
   </div>
 </template>
 
 <script>
-import MyTunes from './MyTunes.vue'
 import Itunes from './Itunes.vue'
+import MyTunes from './MyTunes.vue'
 export default {
   name: 'home',
   data () {
     return {
-      
+      title: ''
+    }
+  },
+  methods: {
+    musicSearch(){
+      this.$store.dispatch('getMusic', this.title)
     }
   },
   components: {
@@ -26,18 +37,25 @@ export default {
 
 
 <style>
-.my-tunes{
+.topRow{
+  background: rgb(3, 3, 3);
+  min-height: 55px;
+  padding-top: 10px;
+  padding-left: 10px
+}  
+#my-tunes{
   display: inline-block;
   min-height: 500px;
   min-width: 50%;
-  background: green;
+  background: yellow;
 }
 
-.itunes{
+#itunes{
   display: inline-block;
-  background: red;
+  background: rgb(31, 30, 30);
   min-height: 500px;
   min-width: 45%;
+  color: white;
 }
 
 </style>
