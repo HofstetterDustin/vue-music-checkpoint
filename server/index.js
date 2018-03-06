@@ -9,8 +9,8 @@ var port = 3000
   
 
 // var authRoutes = require('./auth/routes')
-var generalRoutes = require('./auth/general')
-var personalRoutes = require('./auth/personal')
+var generalRoutes = require('./auth/for-real')
+// var personalRoutes = require('./auth/personal')
 var session = require("./auth/session")
 
 server.use(cors())
