@@ -1,17 +1,23 @@
 var router = require('express').Router()
-//var Grams = require('../models/gram')
-// var Tidbits = require('../models/tidbit')
+var User = require('../models/user')
+// var itunes = require('../models/itunes')
 
-//home page
+router.post("/users", (req, res, next) => {
+    console.log("posting user")
+    Users.find({ username: req.body })
+        .then(user => {
+        if (user) {
+            return res.send(user)
+        } else {
+            return res.status(404).send({ error: "user not found!" })
+        }
+    })
+    .catch(next)
+User.create(req.body)
+    .then(user => {
+        res.send(user);
+    })
+    .catch(next);
+});
 
-//get all by user name
-
-//get all by gram id
-
-//create a gram
-
-//edit a gram by id
-
-//delete gram
-
-module.exports = router
+module.exports = { router }
